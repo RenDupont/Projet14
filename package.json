@@ -37,6 +37,8 @@
     ]
   },
   "devDependencies": {
+    "@types/webpack-env": "^1.18.4",
+    "@types/react-router-dom": "^5.3.3",
     "typescript": "^5.3.3"
   }
 }
