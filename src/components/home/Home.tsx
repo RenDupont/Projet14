@@ -5,8 +5,8 @@ import { states } from '../../assets/states';
 function Home() {
 
     const handleSubmit = (event: React.SyntheticEvent) => {
-        alert('A name was submitted');
         event.preventDefault();
+        
     }
 
     return (
