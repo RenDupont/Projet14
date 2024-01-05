@@ -8,7 +8,7 @@ function Home() {
                 <h1>HRnet</h1>
             </div>
             <div className={Classes.container}>
-                <Link to={'/'}>View Current Employees</Link>
+                <Link to={'/employe-list'}>View Current Employees</Link>
                 <h2>Create Employee</h2>
                 <form action="#" id="create-employee">
                     <label htmlFor="first-name">First Name</label>

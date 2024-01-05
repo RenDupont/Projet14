@@ -6,7 +6,9 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "jquerry": "^0.0.1-security",
     "react": "^18.2.0",
+    "react-data-table-component": "^7.5.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
@@ -37,8 +39,9 @@
     ]
   },
   "devDependencies": {
-    "@types/webpack-env": "^1.18.4",
     "@types/react-router-dom": "^5.3.3",
+    "@types/webpack-env": "^1.18.4",
+    "@types/jquery": "^3.5.29",
     "typescript": "^5.3.3"
   }
 }
