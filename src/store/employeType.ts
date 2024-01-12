@@ -1,14 +1,14 @@
 
 export interface Employee {
-    firstName: string | null;
-    lastName: string | null;
-    startDate: string | null;
-    department: number | null;
-    dateOfBirth: string | null;
+    firstName: string;
+    lastName: string;
+    startDate: string;
+    department: number;
+    dateOfBirth: string;
     address: {
-        street: string | null;
-        city: string | null;
-        state: string | null;
-        zipCode: number | null;
+        street: string;
+        city: string;
+        state: string;
+        zipCode: number;
     };
 }

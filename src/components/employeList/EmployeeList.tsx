@@ -1,4 +1,4 @@
-import Classes from './EmployeList.module.css';
+import Classes from './EmployeeList.module.css';
 import { Link } from 'react-router-dom';
 import DataTable, { TableColumn  } from "react-data-table-component";
 
@@ -15,7 +15,7 @@ type DataRow = {
 };
 
 
-function EmployeList() {
+function EmployeeList() {
 
     const columns: TableColumn<DataRow>[] = [
         {
@@ -69,4 +69,4 @@ function EmployeList() {
     );
 }
 
-export default EmployeList;
+export default EmployeeList;

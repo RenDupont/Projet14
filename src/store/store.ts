@@ -1,29 +1,15 @@
-import { createStore } from 'redux';
 import { Employee } from './employeType';
+import { configureStore } from '@reduxjs/toolkit';
 
 interface AppState {
     employees: Employee[];
 }
 
 const initialState: AppState = {
-    employees: [
-        {
-            firstName: null,
-            lastName: null,
-            startDate: null,
-            department: null,
-            dateOfBirth: null,
-            address: {
-                street: null,
-                city: null,
-                state: null,
-                zipCode: null,
-            },
-        },
-    ],
+    employees: []
 };
 
-const reducer = (state: AppState = initialState, action: any) => {
+const rootReducer = (state: AppState = initialState, action: any) => {
     if(action.type === 'ADD_EMPLOYEE') {
         return {
             ...state,
@@ -33,6 +19,8 @@ const reducer = (state: AppState = initialState, action: any) => {
     return state;
 };
 
-const store = createStore(reducer);
+const store = configureStore({
+    reducer: rootReducer
+});
 
 export default store;
