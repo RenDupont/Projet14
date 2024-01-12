@@ -1,7 +1,7 @@
 import { Employee } from './employeType';
 import { configureStore } from '@reduxjs/toolkit';
 
-interface AppState {
+export interface AppState {
     employees: Employee[];
 }
 
@@ -20,7 +20,8 @@ const rootReducer = (state: AppState = initialState, action: any) => {
 };
 
 const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    devTools: true,
 });
 
 export default store;

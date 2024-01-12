@@ -3,7 +3,7 @@ export interface Employee {
     firstName: string;
     lastName: string;
     startDate: string;
-    department: number;
+    department: string;
     dateOfBirth: string;
     address: {
         street: string;
@@ -11,4 +11,8 @@ export interface Employee {
         state: string;
         zipCode: number;
     };
+}
+
+export interface AppState {
+    employees: Employee[];
 }

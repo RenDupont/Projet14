@@ -1,12 +1,15 @@
 import Classes from './EmployeeList.module.css';
 import { Link } from 'react-router-dom';
 import DataTable, { TableColumn  } from "react-data-table-component";
+import { useSelector } from 'react-redux';
+import { AppState } from '../../store/store';
+import { Employee } from '../../store/employeType';
 
 type DataRow = {
     firstName: string;
     lastName: string;
     startDate: string;
-    department: number;
+    department: string;
     dateOfBirth: string;
     street: string;
     city: string;
@@ -17,6 +20,21 @@ type DataRow = {
 
 function EmployeeList() {
 
+    const employees = useSelector((state: AppState) =>
+        state.employees.map((employee: Employee) => ({
+            firstName: employee.firstName,
+            lastName: employee.lastName,
+            startDate: employee.startDate,
+            department: employee.department,
+            dateOfBirth: employee.dateOfBirth,
+            street: employee.address.street,
+            city: employee.address.city,
+            state: employee.address.state,
+            zipCode: employee.address.zipCode,
+        }))
+    );
+
+    
     const columns: TableColumn<DataRow>[] = [
         {
             name: 'First Name',
@@ -61,7 +79,7 @@ function EmployeeList() {
             <h1>Current Employees</h1>
             <DataTable
                 columns={columns}
-                data={[]}
+                data={employees}
                 pagination
             />
             <Link to={'/'}>Home</Link>

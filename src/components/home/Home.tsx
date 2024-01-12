@@ -2,6 +2,8 @@ import Classes from './Home.module.css';
 import { Link } from "react-router-dom";
 import { states } from '../../assets/states';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../../store/action';
 
 interface formState {
     firstName: string;
@@ -16,6 +18,8 @@ interface formState {
 }
 
 function Home() {
+
+    const dispatch = useDispatch();
 
     const [ formData, setFormData ] = useState<formState> ({
         firstName: '',
@@ -39,6 +43,7 @@ function Home() {
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
+        console.log(value);
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
@@ -47,7 +52,23 @@ function Home() {
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        console.log(formData);
+
+        const employee = {
+            firstName : formData.firstName,
+            lastName: formData.lastName,
+            startDate: formData.startDate,
+            department: formData.department,
+            dateOfBirth: formData.dateOfBirth,
+            address: {
+                street: formData.street,
+                city: formData.city,
+                state: formData.state,
+                zipCode: formData.zipCode,
+            },
+        }
+
+        dispatch(addEmployee(employee));
+        console.log(employee);
     }
 
     return (
