@@ -1,6 +1,7 @@
 import Classes from './EmployeeList.module.css';
 import { Link } from 'react-router-dom';
-import DataTable, { TableColumn  } from "react-data-table-component";
+//import DataTable, { TableColumn  } from "react-data-table-component";
+import DataTable from 'mon-projet-biblio-react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/store';
 import { Employee } from '../../store/employeType';
@@ -35,52 +36,31 @@ function EmployeeList() {
     );
 
     
-    const columns: TableColumn<DataRow>[] = [
-        {
-            name: 'First Name',
-            selector: row => row.firstName,
-        },
-        {
-            name: 'Last Name',
-            selector: row => row.lastName,
-        },
-        {
-            name: 'Start Date',
-            selector: row => row.startDate,
-        },
-        {
-            name: 'Department',
-            selector: row => row.department,
-        },
-        {
-            name: 'Date of Birth',
-            selector: row => row.dateOfBirth,
-        },
-        {
-            name: 'Street',
-            selector: row => row.street,
-        },
-        {
-            name: 'City',
-            selector: row => row.city,
-        },
-        {
-            name: 'State',
-            selector: row => row.state,
-        },
-        {
-            name: 'Zip Code',
-            selector: row => row.zipCode,
-        },
+
+    console.log(employees);
+    
+    const columns = [
+        { key: 'firstName', label: 'First Name' },
+        { key: 'lastName', label: 'Last Name' },
+        { key: 'startDate', label: 'startDate' },
+        { key: 'department', label: 'department' },
+        { key: 'dateofBirth', label: 'dateOfBirth' },
+        { key: 'street', label: 'street' },
+        { key: 'city', label: 'city' },
+        { key: 'state', label: 'state' },
+        { key: 'zipCode', label: 'zipCode' },
     ];
+
+    console.log('employees', employees);
+    console.log('columns', columns);
 
     return (
         <div id="employee-div" className={Classes.container}>
             <h1>Current Employees</h1>
             <DataTable
+                key={employees.length}
                 columns={columns}
                 data={employees}
-                pagination
             />
             <Link to={'/'}>Home</Link>
         </div>
