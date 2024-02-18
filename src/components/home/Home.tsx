@@ -1,9 +1,11 @@
 import Classes from './Home.module.css';
 import { Link } from "react-router-dom";
-import { states } from '../../assets/states';
+import { states } from '../../service/states';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../../store/action';
+import closeIcon from '../../assets/icon/circle-xmark-solid.svg';
+
 
 interface formState {
     firstName: string;
@@ -17,7 +19,7 @@ interface formState {
     zipCode: number;
 }
 
-function Home() {
+function Home(): JSX.Element {
 
     const dispatch = useDispatch();
 
@@ -32,6 +34,7 @@ function Home() {
         state: '',
         zipCode: 0,
     });
+    const [validateForm, setValidateForm] = useState<boolean>(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -53,6 +56,20 @@ function Home() {
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
 
+        const isFormValid = Object.entries(formData).every(([key, value]) => {
+            if (typeof value === 'string' || typeof value === 'number') {
+                return value !== '';
+            } else if (value instanceof Date) {
+                return !isNaN(value.getTime());
+            }
+            return true;
+        });
+    
+        if (!isFormValid) {
+            setValidateForm(false);
+            return;
+        }
+
         const employee = {
             firstName : formData.firstName,
             lastName: formData.lastName,
@@ -67,7 +84,14 @@ function Home() {
             },
         }
 
-        dispatch(addEmployee(employee));
+        try {
+            dispatch(addEmployee(employee));
+            setValidateForm(true);
+        }
+        catch (e) {
+            setValidateForm(false);
+            console.error('Error adding employee:', e);
+        }
         console.log(employee);
     }
 
@@ -138,7 +162,8 @@ function Home() {
                         />
 
                         <label htmlFor="state">State</label>
-                        <select 
+                        <select
+                            className={Classes.customSelect}
                             name="state" 
                             id="state"
                             value={formData.state}
@@ -163,6 +188,7 @@ function Home() {
 
                     <label htmlFor="department">Department</label>
                     <select
+                        className={Classes.customSelect}
                         name="department" 
                         id="department"
                         value={formData.department}
@@ -175,12 +201,17 @@ function Home() {
                         <option value="Human Resources">Human Resources</option>
                         <option value="Legal">Legal</option>
                     </select>
-                    <div>
+                    <div className={Classes.saveEmployee}>
                         <input type='submit' value="Save" />
                     </div>
                 </form>
             </div>
-            <div id="confirmation" className={Classes.modal}>Employee Created!</div>
+            <div id="confirmation" className={validateForm === true? Classes.openModal : Classes.closeModal}>
+                <div className={Classes.modalContent}>
+                    <img className={Classes.closeIcon} src={closeIcon} alt='close' onClick={() => setValidateForm(false)}/>
+                    <span>Employee Created!</span>
+                </div>
+            </div>
         </>
     );
 }

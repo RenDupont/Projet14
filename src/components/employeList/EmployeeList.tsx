@@ -1,10 +1,9 @@
 import Classes from './EmployeeList.module.css';
 import { Link } from 'react-router-dom';
-//import DataTable, { TableColumn  } from "react-data-table-component";
-import DataTable from 'mon-projet-biblio-react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../store/store';
 import { Employee } from '../../store/employeType';
+import DataTable from 'data-table-projet-14/dist/DataTable';
 
 type DataRow = {
     firstName: string;
@@ -19,7 +18,7 @@ type DataRow = {
 };
 
 
-function EmployeeList() {
+function EmployeeList(): JSX.Element {
 
     const employees = useSelector((state: AppState) =>
         state.employees.map((employee: Employee) => ({
@@ -169,8 +168,6 @@ function EmployeeList() {
             zipCode: 1223
         },
     ];
-
-    console.log(employees);
     
     const columns = [
         { key: 'firstName', label: 'First Name' },
@@ -183,9 +180,6 @@ function EmployeeList() {
         { key: 'state', label: 'state' },
         { key: 'zipCode', label: 'zipCode' },
     ];
-
-    console.log('employees', employees);
-    console.log('columns', columns);
 
     return (
         <div id="employee-div" className={Classes.container}>
