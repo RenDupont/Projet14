@@ -122,7 +122,7 @@ function Home(): JSX.Element {
             </div>
             <div className={Classes.container}>
                 <Link to={'/employee-list'}>View Current Employees</Link>
-                <h2>Create Employee</h2>
+                <h3 className={Classes.minorTitle}>Create Employee</h3>
                 <form onSubmit={handleSubmit} id="create-employee">
                     <label htmlFor="first-name">First Name</label>
                     <input 

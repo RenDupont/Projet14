@@ -4,6 +4,9 @@
     justify-content: center;
 }
 
+.minorTitle {
+    font-size: 1.5em;
+}
 
 .container {
     display: flex;
