@@ -4,24 +4,21 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../store/store';
 import { Employee } from '../../store/employeType';
 import DataTable from 'data-table-projet-14/dist/DataTable';
+import { useMemo } from 'react';
 
-type DataRow = {
-    firstName: string;
-    lastName: string;
-    startDate: string;
-    department: string;
-    dateOfBirth: string;
-    street: string;
-    city: string;
-    state: string;
-    zipCode: number;
-};
-
-
+/**
+ * Composant EmployeeList pour afficher la liste des employés.
+ *
+ * @returns Le composant EmployeeList
+ */
 function EmployeeList(): JSX.Element {
 
-    const employees = useSelector((state: AppState) =>
-        state.employees.map((employee: Employee) => ({
+    // Sélection des employés depuis le store Redux
+    const employees = useSelector((state: AppState) => state.employees);
+
+    // Mappage des employés pour adapter le format des données à celui attendu par le composant DataTable
+    const mappedEmployees = useMemo(() =>
+        employees.map((employee: Employee) => ({
             firstName: employee.firstName,
             lastName: employee.lastName,
             startDate: employee.startDate,
@@ -31,10 +28,12 @@ function EmployeeList(): JSX.Element {
             city: employee.address.city,
             state: employee.address.state,
             zipCode: employee.address.zipCode,
-        }))
+        })),
+        [employees]
     );
 
-    const dataTest = [
+    // Jeu de données pour test
+    /*const dataTest = [
         {
             firstName: "John",
             lastName: "Doe",
@@ -167,27 +166,28 @@ function EmployeeList(): JSX.Element {
             state: "WY",
             zipCode: 1223
         },
-    ];
+    ];*/
     
+    // Colonnes à afficher dans le DataTable
     const columns = [
         { key: 'firstName', label: 'First Name' },
         { key: 'lastName', label: 'Last Name' },
-        { key: 'startDate', label: 'startDate' },
-        { key: 'department', label: 'department' },
-        { key: 'dateOfBirth', label: 'dateOfBirth' },
-        { key: 'street', label: 'street' },
-        { key: 'city', label: 'city' },
-        { key: 'state', label: 'state' },
-        { key: 'zipCode', label: 'zipCode' },
+        { key: 'startDate', label: 'Start date' },
+        { key: 'department', label: 'Department' },
+        { key: 'dateOfBirth', label: 'Date of birth' },
+        { key: 'street', label: 'Street' },
+        { key: 'city', label: 'City' },
+        { key: 'state', label: 'State' },
+        { key: 'zipCode', label: 'ZipCode' },
     ];
 
+    // Rendu du composant EmployeeList
     return (
         <div id="employee-div" className={Classes.container}>
             <h1>Current Employees</h1>
             <DataTable
-                key={dataTest.length}
                 columns={columns}
-                data={dataTest}
+                data={mappedEmployees}
             />
             <Link to={'/'}>Home</Link>
         </div>

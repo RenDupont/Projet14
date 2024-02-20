@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addEmployee } from '../../store/action';
 import closeIcon from '../../assets/icon/circle-xmark-solid.svg';
 
-
+// Définition des types pour les données du formulaire
 interface formState {
     firstName: string;
     lastName: string;
@@ -19,10 +19,16 @@ interface formState {
     zipCode: number;
 }
 
+/**
+ * Composant Home pour la création d'un nouvel employé.
+ *
+ * @returns Le composant Home
+ */
 function Home(): JSX.Element {
 
     const dispatch = useDispatch();
 
+    // État pour les données du formulaire et la validation du formulaire
     const [ formData, setFormData ] = useState<formState> ({
         firstName: '',
         lastName: '',
@@ -36,6 +42,11 @@ function Home(): JSX.Element {
     });
     const [validateForm, setValidateForm] = useState<boolean>(false);
 
+    /**
+     * Gestion du changement des entrées de texte du formulaire.
+     *
+     * @param e L'événement de changement déclenché lorsqu'un utilisateur tape dans un champ de texte
+     */
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -44,15 +55,24 @@ function Home(): JSX.Element {
         }));
     };
 
+    /**
+     * Gestion du changement des sélections du formulaire.
+     *
+     * @param e L'événement de changement déclenché lorsqu'un utilisateur sélectionne une option dans un menu déroulant
+     */
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
-        console.log(value);
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
     };
 
+    /**
+     * Gestion de la soumission du formulaire.
+     *
+     * @param e L'événement de soumission du formulaire
+     */
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
 
@@ -92,9 +112,9 @@ function Home(): JSX.Element {
             setValidateForm(false);
             console.error('Error adding employee:', e);
         }
-        console.log(employee);
     }
 
+    // Rendu du composant Home
     return (
         <>
             <div className={Classes.title}>
