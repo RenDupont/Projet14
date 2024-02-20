@@ -3874,10 +3874,10 @@ damerau-levenshtein@^1.0.8:
   resolved "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz"
   integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
 
-data-table-projet-14@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/data-table-projet-14/-/data-table-projet-14-1.0.8.tgz"
-  integrity sha512-y0MwkXmzNHRFjxQ/0Lfm9WQkUQV6NSiwpdB1+AyOWcrOIGSCZ8fDP2aAIKsIvXSfRG2v+vPMcPJu/8CaWoshdg==
+data-table-projet-14@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/data-table-projet-14/-/data-table-projet-14-1.0.10.tgz"
+  integrity sha512-VbfSiuMmlDW2Wd1jFdPQv8mBuUtbfp5gAe7cFKV4Uffaci28L4tr+qBb8tyIU/4PzHRp5Vd8CsnbAo+IhUN9RQ==
 
 data-urls@^2.0.0:
   version "2.0.0"
