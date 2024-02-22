@@ -2,6 +2,9 @@
   "name": "projet14",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Dupont Renaud"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@rendup/mydatatable": "^0.1.0",
@@ -9,7 +12,6 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "data-table-projet-14": "^1.0.10",
-    "jquerry": "^0.0.1-security",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.4",
     "react-dom": "^18.2.0",

@@ -33,7 +33,7 @@ function EmployeeList(): JSX.Element {
     );
 
     // Jeu de données pour test
-    /*const dataTest = [
+    const dataTest = [
         {
             firstName: "John",
             lastName: "Doe",
@@ -166,7 +166,7 @@ function EmployeeList(): JSX.Element {
             state: "WY",
             zipCode: 1223
         },
-    ];*/
+    ];
     
     // Colonnes à afficher dans le DataTable
     const columns = [
@@ -187,7 +187,7 @@ function EmployeeList(): JSX.Element {
             <h1>Current Employees</h1>
             <DataTable
                 columns={columns}
-                data={mappedEmployees}
+                data={dataTest}
             />
             <Link to={'/'}>Home</Link>
         </div>
